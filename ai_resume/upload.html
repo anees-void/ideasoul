@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Resume</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Upload Resume</h1>
+
+    <label>Upload Resume Photo</label>
+    <input type="file" accept="image/*" onchange="loadPhoto(event)">
+    <img id="photoPreview" style="display:none; width:100%; margin-top:10px;">
+
+    <label>Paste Resume Text</label>
+    <textarea id="resumeText" rows="8"
+    placeholder="Worked on Java projects, SQL databases, AWS cloud..."></textarea>
+
+    <button onclick="scanResume()">Scan Resume</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
