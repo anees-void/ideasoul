@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Evaluation Result</h1>
+
+    <img id="finalPhoto" style="width:100%; margin-bottom:10px;">
+
+    <p><strong>Score:</strong> <span id="score"></span>%</p>
+
+    <h3>Matched Skills</h3>
+    <ul id="found"></ul>
+
+    <h3>Missing Skills</h3>
+    <ul id="missing"></ul>
+
+    <p id="feedback"></p>
+</div>
+
+<script>
+const found = JSON.parse(localStorage.getItem("found")) || [];
+const missing = JSON.parse(localStorage.getItem("missing")) || [];
+const confidence = JSON.parse(localStorage.getItem("confidence")) || {};
+const score = localStorage.getItem("score") || 0;
+const photo = localStorage.getItem("profilePhoto");
+
+document.getElementById("score").innerText = score;
+
+if (photo) document.getElementById("finalPhoto").src = photo;
+
+found.forEach(s =>
+    document.getElementById("found").innerHTML +=
+    `<li>${s} — ${confidence[s]}</li>`
+);
+
+missing.forEach(s =>
+    document.getElementById("missing").innerHTML += `<li>${s}</li>`
+);
+
+document.getElementById("feedback").innerText =
+    missing.length === 0
+    ? "All skills matched. Candidate selected."
+    : "Improve missing skills to increase chances.";
+</script>
+
+</body>
+</html>
