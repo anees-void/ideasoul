@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Feed</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Job Openings</h1>
+
+    <ul id="jobSkills"></ul>
+
+    <button onclick="applyJob()">Apply</button>
+</div>
+
+<script>
+const skills = localStorage.getItem("jobSkills");
+const ul = document.getElementById("jobSkills");
+
+if (!skills) {
+    ul.innerHTML = "<li>No jobs posted</li>";
+} else {
+    skills.split(",").forEach(s =>
+        ul.innerHTML += `<li>${s.trim()}</li>`
+    );
+}
+
+function applyJob() {
+    window.location.href = "upload.html";
+}
+</script>
+
+</body>
+</html>
